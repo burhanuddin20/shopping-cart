@@ -26,3 +26,186 @@
 .nav-link:hover {
     color: #007bff;
 }
+
+.cart-dropdown {
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.cart-preview {
+    position: absolute;
+    top: calc(100% - 0.5rem);
+    right: 0;
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+    transform: translateY(-10px);
+}
+
+.cart-dropdown::after {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    bottom: -20px;
+    left: 0;
+}
+
+.cart-dropdown:hover .cart-preview {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.cart-preview:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cart-preview:not(:hover) {
+    transition-delay: 0.3s;
+}
+
+.cart-preview-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.cart-preview-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    position: relative;
+}
+
+.cart-preview-item:last-child {
+    border-bottom: none;
+}
+
+.cart-preview-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-preview-item-details {
+    flex: 1;
+    padding-right: 24px;
+}
+
+.cart-preview-item-details .item-title {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.cart-preview-item-details .item-quantity {
+    color: var(--secondary-color);
+    font-size: 0.8rem;
+}
+
+.cart-preview-item-details .item-price {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.cart-preview-footer {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.cart-preview-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.view-cart-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--accent-color);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.view-cart-btn:hover {
+    background-color: #0773c5;
+}
+
+/* Add smooth transition for dropdown */
+.cart-preview {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+
+.cart-dropdown:hover .cart-preview {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Scrollbar styling for cart preview */
+.cart-preview-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cart-preview-items::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.cart-preview-items::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
+}
+
+.cart-preview-items::-webkit-scrollbar-thumb:hover {
+    background: #0773c5;
+}
+
+.cart-link {
+    padding: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.preview-remove-btn {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.preview-remove-btn:hover {
+    background-color: #ff4757;
+    color: white;
+}

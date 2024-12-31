@@ -1,0 +1,128 @@
+.item-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 300px;
+}
+
+.item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.item-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.item-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover .item-card-image img {
+  transform: scale(1.05);
+}
+
+.item-card-content {
+  padding: 1.5rem;
+}
+
+.item-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.item-price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex: 1;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #0773c5;
+}
+
+/* Add shop grid styles to ensure proper card layout */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .item-card {
+    max-width: 100%;
+  }
+  
+  .shop-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+.item-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.item-quantity {
+  width: 60px;
+  padding: 0.5rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.item-quantity:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(9, 132, 227, 0.2);
+}
+
+/* Remove spinner buttons from number input */
+.item-quantity::-webkit-inner-spin-button,
+.item-quantity::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.item-quantity[type=number] {
+  -moz-appearance: textfield;
+}
+
+.add-to-cart-btn.added {
+  background-color: #27ae60;
+}
+
+.add-to-cart-btn.added:hover {
+  background-color: #219a52;
+}
