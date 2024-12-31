@@ -8,6 +8,11 @@ const routes = [
         path: '/',
         element : <App />,
         errorElement: <ErrorPage />,
+    },
+    {
+        path: '/shop',
+        element: <ShopPage />,
+        errorElement: <ErrorPage />,
     }
 ];
 
