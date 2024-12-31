@@ -7,18 +7,18 @@ function App() {
   const navigate = useNavigate();
 
   return (
-    <>
-      <div>
-        <NavBar />
+    <div className="app-wrapper">
+      <NavBar />
+      <div className="content-container">
         <div className="home-container">
           <h1 className="home-title">Welcome to the shop!</h1>
           <h3 className="home-subtitle">Start Buying shit now!</h3>
           <button className="shop-now-btn" onClick={() => navigate('/shop')}>
-              Start shopping now!
+            Start shopping now!
           </button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
