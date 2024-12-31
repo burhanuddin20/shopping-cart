@@ -146,3 +146,20 @@
     background-color: #0773c5;
   }
   
+  .shop-container h2 {
+    text-align: center;
+    padding: 2rem;
+    color: var(--secondary-color);
+  }
+  
+  /* Optional: Add a loading animation */
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+  
+  .shop-container h2:first-of-type {
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  

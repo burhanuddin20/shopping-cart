@@ -1,21 +1,49 @@
 import NavBar from "../../Components/NavBar/NavBar";
 import ItemCard from "../../Components/ItemCard/ItemCard";
+import { useState, useEffect } from "react";
 
 function ShopPage() {
-    const items = [
-        {
-            id: 1,
-            title: "Cool Product",
-            price: 29.99,
-            image: "https://via.placeholder.com/300"
-        },
-        {
-            id: 2,
-            title: "Awesome Item",
-            price: 39.99,
-            image: "https://via.placeholder.com/300"
-        },
-    ];
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        getFakeItems()
+            .then(data => {
+                setItems(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                setError(err.message);
+                setLoading(false);
+            });
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="app-wrapper">
+                <NavBar />
+                <div className="content-container">
+                    <div className="shop-container">
+                        <h2>Loading products...</h2>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="app-wrapper">
+                <NavBar />
+                <div className="content-container">
+                    <div className="shop-container">
+                        <h2>Error: {error}</h2>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="app-wrapper">
@@ -38,6 +66,19 @@ function ShopPage() {
             </div>
         </div>
     );
+}
+
+async function getFakeItems() {
+    try {
+        const response = await fetch('https://fakestoreapi.com/products?limit=5');
+        if (!response.ok) {
+            throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw new Error('Error fetching products: ' + error.message);
+    }
 }
 
 export default ShopPage;
